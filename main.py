@@ -1,7 +1,7 @@
 import mysql.connector
 from flask import Flask, render_template, request
 
-#______Connecting_to_Database__________bla
+#______Connecting_to_Database__________test
 
 db = mysql.connector.connect(
     host="localhost",
