@@ -103,6 +103,11 @@ header{
     overflow: hidden;
 }
 
+.card:hover{
+    box-shadow: 0 5px 25px rgba(255, 0, 0, 0.466);
+    transition: .5s;
+}
+
 .card-image{
     max-height: 200px;
 }
