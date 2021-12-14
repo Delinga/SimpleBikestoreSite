@@ -5,6 +5,7 @@
         <title>MyLittleBikeshop</title>
         <link rel="stylesheet" href="static/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- Header Start -->
@@ -23,22 +24,68 @@
         </header>
         <!-- Header End -->
 
-        <!-- Sortiment Section -->
-        <section class="sortiment">
-            <div class="container">
-                {% for info in bike_infos %}
-                <div class="bikecard">
-                    <a href=""><div class="card">
-                        <div class="card-image"><img src="static/images/{{ info[5]}}" alt=""></div>
-                        <div class="card-info">
-                            <h1>{{ info[1] }}</h1>
-                            <h2>{{ info[2] }}</h2>
-                            <h3>{{ info[3] }}</h3>
+        <section class="sortiment-section">
+
+            <!-- Sidebar Start -->
+
+            <div class="sidebar">
+                <div class="container">
+                    <div class="filtermenu">
+                        <h3>Filter</h3>
+                        <div class="item">
+                            <a class="subbtn" href="#">Marken</a>
+                            <div class="submenu">
+                                
+                                {%for brand in brands %}
+                                <form action="/" METHOD="POST">
+                                    <input class ="sub-item" type="submit" value="{{ brand }}" name="brand">
+                                </form>
+
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div></a>
+                        <li><a class="item" href="#">Kategorie</a></li> 
+                        <li><a class="item" href="#">Preis</a></li> 
+                        <li><a class="item" href="#">Jahr</a></li> 
+                    </div>
                 </div>
-                {% endfor %}
+            </div>
+
+            <!-- Sidebar End   -->
+
+
+
+        <!-- Sortiment Section -->
+            <div class="sortiment">
+                <div class="container">
+
+                    {% for info in bike_infos %}
+
+                    <div class="bikecard">
+                        <a href=""><div class="card">
+                            <div class="card-image"><img src="static/images/{{ info[5]}}" alt=""></div>
+                            <div class="card-info">
+                                <h1>{{ info[1] }}</h1>
+                                <h2>{{ info[2] }}</h2>
+                                <h3>{{ info[3] }}</h3>
+                            </div>
+                        </div></a>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
             </div>
         </section>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.subbtn').click(function(){
+                    $(this).next('.submenu').slideToggle();
+                });
+            });
+        </script>
+
+
     </body>
 </html>

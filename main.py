@@ -1,7 +1,7 @@
 import mysql.connector
 from flask import Flask, render_template, request
 
-#______Connecting_to_Database__________test123
+#______Connecting_to_Database__________
 
 db = mysql.connector.connect(
     host="localhost",
@@ -15,11 +15,28 @@ mycursor = db.cursor()
 
 app = Flask(__name__)
 
-@app.route("/" , methods=['GET'])
+@app.route("/" , methods=['GET','POST'])
 def index():
-    mycursor.execute("SELECT * FROM bikes")
+
+
+    sort_brand = ''
+    available_brands = []
+
+
+    mycursor.execute("SELECT DISTINCT brand FROM bikes")
+    for entry in mycursor:
+        available_brands.append(entry[0])
+
     
-    return render_template('index.html', bike_infos=mycursor)
+    if request.method == "POST":
+        sort_brand = request.form['brand']
+        mycursor.execute("SELECT * FROM bikes WHERE brand = %s", (sort_brand,))
+        print(sort_brand)
+        return render_template('index.html', brands=available_brands, bike_infos=mycursor)
+
+    mycursor.execute("SELECT * FROM bikes")
+
+    return render_template('index.html', brands=available_brands, bike_infos=mycursor)
 
 
 

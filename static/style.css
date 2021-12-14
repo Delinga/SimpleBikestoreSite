@@ -66,6 +66,8 @@ header{
 
 /*_________Header with Navbar End___________*/
 
+/* ___________Sortiment Start______________ */
+
 .sortiment{
     position: relative;
     max-width: 1440px;
@@ -103,11 +105,6 @@ header{
     overflow: hidden;
 }
 
-.card:hover{
-    box-shadow: 0 5px 25px rgba(255, 0, 0, 0.466);
-    transition: .5s;
-}
-
 .card-image{
     max-height: 200px;
 }
@@ -132,4 +129,62 @@ header{
 .card-info h2{
     font-size: 1.3em;
     font-weight: 800;
+}
+
+/* ___________Sortiment End______________ */
+
+/*___________Sidebar________*/
+.sidebar{
+    max-width: 30%;
+    min-width: 15%;
+    padding: 4rem 2rem;
+}
+
+.sortiment-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+}
+
+.sidebar .container{
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+
+}
+
+.sortiment-section .container .filtermenu{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sortiment-section .container .filtermenu .item{
+    position: relative;
+    cursor: pointer;
+}
+
+.sortiment-section .container .filtermenu a{
+    color: #fff;
+    background: rgba(0, 0, 0, 0.329);
+    border-radius: 2px;
+    font-size: 16px;
+    display: block;
+    padding: 5px 30px;
+    line-height: 60px;
+}
+
+.sortiment-section .container .filtermenu a:hover{
+    background: #c1e3ff;
+    transition: 0.3s ease;
+}
+
+.sortiment-section .container .filtermenu .item .submenu{
+    background: #999393;
+}
+
+.sortiment-section .container .filtermenu .item .submenu input{
+    padding-left: 80px;
 }
